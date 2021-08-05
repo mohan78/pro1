@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div class="container">
+    <div class="main">
+        <h1 class="text-center">Title of the application</h1>
+
+        <div class="card my-card" style="width: 800px">
+            <div class="card-body">
+                <form method="POST" action="/">
+                    <div class="row">
+                        <div class="col-5 g-3">
+                            <input type="text" class="form-control" placeholder="Start Date" id="datepicker1" name="startDate" value="{{start_date}}">
+                        </div>
+                        <div class="col-5 g-3">
+                            <input type="text" class="form-control" placeholder="End Date" id="datepicker2" name="endDate" value="{{ end_date }}">
+                        </div>
+                        <div class="col-2 g-3">
+                            <input type="submit" class="btn btn-primary" id="check" name="button" value="load" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-10 g-3">
+                            <select class="form-select" id="ipRanges">
+                                <option selected>IP Ranges</option>
+                                {% for row in rows %}
+                                    <option value="{{ row.source_ipv4 }} - {{ row.destination_ipv4 }}">
+                                        {{ row.source_ipv4 }} - {{ row.destination_ipv4 }}
+                                    </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-2 g-3">
+                            <button type="submit" class="btn btn-primary">Check</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
