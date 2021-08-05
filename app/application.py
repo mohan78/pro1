@@ -20,8 +20,8 @@ def hello_world():
     if request.method == 'POST':
         start = request.form.get('startDate')
         end = request.form.get('endDate')
-        start_date = datetime.strptime(start, '%Y-%m-%d')
-        end_date = datetime.strptime(end, '%Y-%m-%d')
+        start_date = datetime.strptime(start, '%Y-%m-%d %H:%M')
+        end_date = datetime.strptime(end, '%Y-%m-%d %H:%M')
         print(request.form.get('button'))
 
         button = request.form.get('button')
